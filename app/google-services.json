@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "58939214095",
+    "project_id": "saveyourself-f244c",
+    "storage_bucket": "saveyourself-f244c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58939214095:android:2d661a0afd0ac74850167a",
+        "android_client_info": {
+          "package_name": "com.example.save_yourself"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58939214095-lh2a3d3ivgj85kj0l49qj4pgiagkhaa0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNFyCv_cMQrFyi_4Ruauz9DeYgfuEU1mY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58939214095-lh2a3d3ivgj85kj0l49qj4pgiagkhaa0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
