@@ -5,7 +5,7 @@ data class Users(
     val doctorname: String,
     val image: String,
     val problem: String,
-    val status: String,
+    var status: String,
     val username: String,
     val user: String
 )

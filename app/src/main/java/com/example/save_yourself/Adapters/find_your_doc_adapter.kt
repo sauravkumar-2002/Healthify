@@ -31,6 +31,7 @@ import java.lang.reflect.Type
 class find_your_doc_adapter(var context:Context,signUpModelObject: sign_up_log_in_model):RecyclerView.Adapter<find_your_doc_adapter.ViewHolder>() {
     var doct_list= mutableListOf<log_in_model_doctor>()
      var signUpModelObject=signUpModelObject
+
     fun setDoctorList(doct_list: List<log_in_model_doctor>){
         this.doct_list= doct_list as MutableList<log_in_model_doctor>
         notifyDataSetChanged()
@@ -178,19 +179,7 @@ var reqCall=Auth_interface_1.getInstance().check_prev_appointment(signUpModelObj
 
    })
 
-    /*
-    var add_doctor=Doctors(choosen_date,doct_list.get(position).Name,"Not_applicable",rel_problems,"pending",
-                   signUpModelObject.Name,doct_list.get(position).DoctorId)
-               doc_list.add(add_doctor)
-                var obj=Appointment_user_doctor(doc_list,signUpModelObject.Phone)
 
-    var add_user=Users(choosen_date,doct_list.get(position).Name,"Not_applicable",rel_problems,"pending",
-        signUpModelObject.Name,signUpModelObject.Phone)
-    var appointmentDoctorUser=Appointment_doctor_user(doct_list.get(position).DoctorId,add_user)
-    var reqcall=Auth_interface_1.getInstance().add_appointment_to_doctor()
-
-
-     */
     var reqcall=Auth_interface_1.getInstance().find_doctor_for_appointment(doct_list.get(position).DoctorId)
     reqcall.enqueue(object :Callback<List<Appointment_doctor_user>>{
         override fun onResponse(

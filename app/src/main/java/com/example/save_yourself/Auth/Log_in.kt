@@ -82,6 +82,7 @@ class Log_in : AppCompatActivity() {
                         .show()
                     Log.i("checkApi_loginn", response.body().toString())
                     val intent = Intent(this@Log_in, Dashboard_doctor::class.java)
+                    sharedPref.edit().putString("doctor_id",doctorid).apply()
 
                     startActivity(intent)
                     dialog.dismiss()
