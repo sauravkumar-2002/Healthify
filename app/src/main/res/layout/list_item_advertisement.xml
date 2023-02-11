@@ -10,12 +10,12 @@
     app:cardMaxElevation="0dp"
 
     app:cardUseCompatPadding="true">
-    <ImageView
+    <TextView
         android:layout_width="400dp"
         android:layout_height="229dp"
         android:gravity="center"
         android:id="@+id/img_adv"
         android:padding="12dp">
 
-    </ImageView>
+    </TextView>
 </androidx.cardview.widget.CardView>

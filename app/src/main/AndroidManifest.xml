@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Save_YourSelf">
         <activity
+            android:name=".Activities.Doctor.appointment_request"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.Doctor.Doctor_records"
+            android:exported="true" />
+        <activity
             android:name=".Activities.Patient.Extra_Appointment"
             android:exported="true" />
         <activity

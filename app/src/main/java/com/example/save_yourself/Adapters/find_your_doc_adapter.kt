@@ -178,6 +178,55 @@ var reqCall=Auth_interface_1.getInstance().check_prev_appointment(signUpModelObj
 
    })
 
+    /*
+    var add_doctor=Doctors(choosen_date,doct_list.get(position).Name,"Not_applicable",rel_problems,"pending",
+                   signUpModelObject.Name,doct_list.get(position).DoctorId)
+               doc_list.add(add_doctor)
+                var obj=Appointment_user_doctor(doc_list,signUpModelObject.Phone)
 
+    var add_user=Users(choosen_date,doct_list.get(position).Name,"Not_applicable",rel_problems,"pending",
+        signUpModelObject.Name,signUpModelObject.Phone)
+    var appointmentDoctorUser=Appointment_doctor_user(doct_list.get(position).DoctorId,add_user)
+    var reqcall=Auth_interface_1.getInstance().add_appointment_to_doctor()
+
+
+     */
+    var reqcall=Auth_interface_1.getInstance().find_doctor_for_appointment(doct_list.get(position).DoctorId)
+    reqcall.enqueue(object :Callback<List<Appointment_doctor_user>>{
+        override fun onResponse(
+            call: Call<List<Appointment_doctor_user>>,
+            response: Response<List<Appointment_doctor_user>>
+        ) {
+           Log.i("iii","888")
+
+           var userlist=response.body()!![0].users
+            var add_user=Users(choosen_date,doct_list.get(position).Name,"Not_applicable",rel_problems,"pending",
+                signUpModelObject.Name,signUpModelObject.Phone)
+            userlist.add(add_user)
+            var appointmentDoctorUser=Appointment_doctor_user(doct_list.get(position).DoctorId,userlist)
+            var reqcall=Auth_interface_1.getInstance().add_appointment_to_doctor(doct_list.get(position).DoctorId,appointmentDoctorUser)
+            reqcall.enqueue(object :Callback<Appointment_doctor_user>{
+                override fun onResponse(
+                    call: Call<Appointment_doctor_user>,
+                    response: Response<Appointment_doctor_user>
+                ) {
+                   Toast.makeText(context,"Appointment Requested",Toast.LENGTH_LONG).show()
+                }
+
+                override fun onFailure(call: Call<Appointment_doctor_user>, t: Throwable) {
+
+                }
+
+            })
+
+
+
+        }
+
+        override fun onFailure(call: Call<List<Appointment_doctor_user>>, t: Throwable) {
+
+        }
+
+    })
 }
 

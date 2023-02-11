@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface Adv_interface_1 {
-    @GET("images")
+    @GET("quotes")
     fun getImageUrl(): Call<List<url_model>>
 
     companion object{

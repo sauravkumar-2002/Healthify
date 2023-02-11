@@ -1,5 +1,7 @@
 package com.example.save_yourself.Services_and_interface
 
+import com.example.save_yourself.Activities.Patient.findYourDoctor
+import com.example.save_yourself.Models.Appointment_doctor_user
 import com.example.save_yourself.Models.Appointment_user_doctor
 import com.example.save_yourself.Models.log_in_model_doctor
 import com.example.save_yourself.Models.sign_up_log_in_model
@@ -30,6 +32,12 @@ interface Auth_interface_1 {
 
     @POST("appointments/userdoctor")
     fun add_appointment(@Body userData:Appointment_user_doctor):Call<Appointment_user_doctor>
+
+    @PATCH("appointments/doctoruser/{doctor}")
+    fun add_appointment_to_doctor(@Path("doctor")doctor:String,@Body userData:Appointment_doctor_user):Call<Appointment_doctor_user>
+
+    @GET("appointments/doctoruser")
+    fun find_doctor_for_appointment(@Query("doctor")doctor: String):Call<List<Appointment_doctor_user>>
 
     @PATCH("appointments/userdoctor/{user}")
      fun update_appointment_list(@Path("user")user:String,@Body userData:Appointment_user_doctor):Call<Appointment_user_doctor>//change to list
