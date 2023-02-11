@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "58939214095",
+    "firebase_url": "https://saveyourself-f244c-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "saveyourself-f244c",
     "storage_bucket": "saveyourself-f244c.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "58939214095-4ak6mtb55185fc55dnn784lvc4fc6u9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.save_yourself",
+            "certificate_hash": "03fc6b0c893faa8d5e8fb245cbd1fc882a554b55"
+          }
+        },
         {
           "client_id": "58939214095-lh2a3d3ivgj85kj0l49qj4pgiagkhaa0.apps.googleusercontent.com",
           "client_type": 3

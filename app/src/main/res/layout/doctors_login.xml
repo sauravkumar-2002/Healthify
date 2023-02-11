@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    app:cardBackgroundColor="#F8F8F8"
+    app:cardCornerRadius="10dp"
+    app:cardMaxElevation="0dp"
+
+    app:cardUseCompatPadding="true">
+    <LinearLayout
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="0dp"
+    android:layout_marginRight="20dp"
+    android:orientation="vertical"
+    app:layout_constraintHorizontal_bias="0.15"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.066">
+    <TextView
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Enter Your Doctor Id -"
+        android:layout_gravity="left"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/login_doctor_id"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_bg"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_medium"
+        android:hint="Enter Your Doctor id"
+        android:text=""
+        android:inputType="textPassword"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/continue_button_doctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/auth_bttn"
+            android:drawableEnd="@drawable/ic_baseline_double_arrow_24"
+            android:drawableTint="@color/white"
+            android:fontFamily="@font/montserrat_bold"
+
+            android:paddingLeft="40dp"
+            android:paddingTop="14dp"
+            android:paddingRight="40dp"
+            android:paddingBottom="14dp"
+            android:text="continue  "
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"
+            app:layout_constraintVertical_bias="1.0" />
+</LinearLayout>
+</androidx.cardview.widget.CardView>

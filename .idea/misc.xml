@@ -13,10 +13,13 @@
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/drawable/ic_launcher_background.xml" value="0.107421875" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/drawable/my_chats.xml" value="0.1" />
+        <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/drawable/singlerow1bg.xml" value="0.199609375" />
+        <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/drawable/singlerow2bg.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/drawable/tab_text.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/activity_active_chats.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/activity_appointment.xml" value="0.1875" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/activity_chat.xml" value="0.14847161572052403" />
+        <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/activity_dashboard_doctor.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/activity_dashboard_patient.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/activity_extra_appointment.xml" value="0.1875" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/activity_find_your_doctor.xml" value="0.25" />
@@ -28,11 +31,14 @@
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/doctors_login.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/list_item_advertisement.xml" value="0.1" />
+        <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/list_item_chat.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/list_item_find_your_doc.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/list_item_records.xml" value="0.17777777777777778" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/my_chats_layout.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/notification.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/others_chats_layout.xml" value="0.1" />
+        <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/single_row_1.xml" value="0.1" />
+        <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/layout/single_row_2.xml" value="0.1" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/menu/menu_extra.xml" value="0.1875" />
         <entry key="..\:/iit ism/2023_android/Save_YourSelf/app/src/main/res/menu/searchtoolbar.xml" value="0.1" />
       </map>
