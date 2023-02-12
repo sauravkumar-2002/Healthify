@@ -47,20 +47,26 @@ class records : AppCompatActivity() {
         binding.recv.layoutManager = layoutManager
 
         var adapter = patient_records_adapter(this)
-        binding.recv.adapter = adapter
 
+        binding.recv.adapter = adapter
+        binding.recv.visibility = View.GONE
+
+        binding.errorText.visibility = View.VISIBLE
         var reqCall = Auth_interface_1.getInstance().check_prev_appointment(signUpModelObject.Phone)
         reqCall.enqueue(object : Callback<List<Appointment_user_doctor>> {
             override fun onResponse(
                 call: Call<List<Appointment_user_doctor>>,
                 response: Response<List<Appointment_user_doctor>>
             ) {
-                adapter.setDoctorList(response.body()!![0].doctors, "completed")
-                Log.i("check_records", response.body().toString())
+                if(response.body()!!.size>0) {
+                    adapter.setDoctorList(response.body()!![0].doctors, "completed")
+                    binding.recv.visibility = View.VISIBLE
+                    binding.errorText.visibility = View.GONE
+                }
             }
 
             override fun onFailure(call: Call<List<Appointment_user_doctor>>, t: Throwable) {
-                Log.i("check_records", t.message.toString())
+                binding.errorText.visibility = View.VISIBLE
             }
 
         })

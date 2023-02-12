@@ -51,7 +51,9 @@ class activeChats : AppCompatActivity() {
                 call: Call<List<Appointment_user_doctor>>,
                 response: Response<List<Appointment_user_doctor>>
             ) {
-                adapter.setDoctorList(response.body()!![0].doctors,"in progress")
+                if(response.body()!!.size>0) {
+                    adapter.setDoctorList(response.body()!![0].doctors, "in progress")
+                }
 
             }
 

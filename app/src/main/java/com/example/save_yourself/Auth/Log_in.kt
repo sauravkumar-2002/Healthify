@@ -150,7 +150,7 @@ class Log_in : AppCompatActivity() {
 
             val reqcall = Auth_interface_1.getInstance().log_in_user(
 
-                binding.loginPhone.text.toString().trim(),
+                "+91"+binding.loginPhone.text.toString().trim(),
                 binding.loginPassword.text.toString().trim()
             )
             reqcall.enqueue(object : Callback<List<sign_up_log_in_model>> {

@@ -217,35 +217,41 @@ fun bookappointment(
             response: Response<List<Appointment_doctor_user>>
         ) {
             Log.i("iii", "888")
+            var userlist=mutableListOf<Users>()
+            if (response.body()!!.size > 0) {
+                userlist = response.body()!![0].users
+            }
+                var add_user = Users(
+                    choosen_date,
+                    doct_list.get(position).Name,
+                    "Not_applicable",
+                    rel_problems,
+                    "pending",
+                    signUpModelObject.Name,
+                    signUpModelObject.Phone
+                )
+                userlist.add(add_user)
+            Log.i("userlist",userlist.toString())
+                var appointmentDoctorUser =
+                    Appointment_doctor_user(doct_list.get(position).DoctorId, userlist as ArrayList<Users>)
+                var reqcall = Auth_interface_1.getInstance()
+                    .add_appointment_to_doctor(
+                        doct_list.get(position).DoctorId,
+                        appointmentDoctorUser
+                    )
+                reqcall.enqueue(object : Callback<Appointment_doctor_user> {
+                    override fun onResponse(
+                        call: Call<Appointment_doctor_user>,
+                        response: Response<Appointment_doctor_user>
+                    ) {
+                        Toast.makeText(context, "Appointment Requested", Toast.LENGTH_LONG).show()
+                    }
 
-            var userlist = response.body()!![0].users
-            var add_user = Users(
-                choosen_date,
-                doct_list.get(position).Name,
-                "Not_applicable",
-                rel_problems,
-                "pending",
-                signUpModelObject.Name,
-                signUpModelObject.Phone
-            )
-            userlist.add(add_user)
-            var appointmentDoctorUser =
-                Appointment_doctor_user(doct_list.get(position).DoctorId, userlist)
-            var reqcall = Auth_interface_1.getInstance()
-                .add_appointment_to_doctor(doct_list.get(position).DoctorId, appointmentDoctorUser)
-            reqcall.enqueue(object : Callback<Appointment_doctor_user> {
-                override fun onResponse(
-                    call: Call<Appointment_doctor_user>,
-                    response: Response<Appointment_doctor_user>
-                ) {
-                    Toast.makeText(context, "Appointment Requested", Toast.LENGTH_LONG).show()
-                }
+                    override fun onFailure(call: Call<Appointment_doctor_user>, t: Throwable) {
+        Log.i("fail",t.message.toString())
+                    }
 
-                override fun onFailure(call: Call<Appointment_doctor_user>, t: Throwable) {
-
-                }
-
-            })
+                })
 
 
         }
@@ -255,5 +261,8 @@ fun bookappointment(
         }
 
     })
+
 }
+
+
 
