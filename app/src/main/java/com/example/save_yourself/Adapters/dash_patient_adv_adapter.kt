@@ -31,7 +31,7 @@ class dash_patient_adv_adapter(var context: Context):RecyclerView.Adapter<dash_p
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.i("this",url_list.get(position).data)
+       // Log.i("this",url_list.get(position).data)
       //Glide.with(context).load(url_list.get(position).url).centerCrop().into(holder.img)
         holder.quotes.text=url_list.get(position).data
     }

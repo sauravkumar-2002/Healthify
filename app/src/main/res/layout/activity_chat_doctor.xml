@@ -10,8 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activities.ChatActivity"
-       >
+        tools:context=".Activities.ChatActivityDoctor"
+        >
 
         <TextView
             android:id="@+id/userMssg"
