@@ -21,22 +21,30 @@ import retrofit2.Response
 class activeChats : AppCompatActivity() {
     lateinit var binding: ActivityActiveChatsBinding
     lateinit var signUpModelObject: sign_up_log_in_model
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_active_chats)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        setSupportActionBar(binding.myToolbar)
     }
+
+
     override fun onResume() {
         super.onResume()
         setSharedpref()
         loadRecyclerview()
     }
+
+
     private fun loadRecyclerview() {
         var layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.recv.layoutManager = layoutManager
+
         var adapter= patient_records_adapter(this)
         binding.recv.adapter=adapter
+
         var reqCall= Auth_interface_1.getInstance().check_prev_appointment(signUpModelObject.Phone)
         reqCall.enqueue(object : Callback<List<Appointment_user_doctor>> {
             override fun onResponse(
@@ -44,16 +52,17 @@ class activeChats : AppCompatActivity() {
                 response: Response<List<Appointment_user_doctor>>
             ) {
                 adapter.setDoctorList(response.body()!![0].doctors,"in progress")
-                //Log.i("check_records",response.body().toString())
+
             }
 
             override fun onFailure(call: Call<List<Appointment_user_doctor>>, t: Throwable) {
-                //Log.i("check_records",t.message.toString())
+
             }
 
         })
 
     }
+
 
     private fun setSharedpref() {
         val sp = getSharedPreferences("login",MODE_PRIVATE)

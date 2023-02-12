@@ -11,10 +11,8 @@ import retrofit2.Response
 class Dashboard_patient_view_model:ViewModel() {
     var urllist=MutableLiveData<List<url_model>>()
     var errorMessage = MutableLiveData<String>()
-    var active_chats_liveData= MutableLiveData<String>("Not_Clicked")
-    var find_your_doctor_liveData= MutableLiveData<String>("Not_Clicked")
-    var my_profile_liveData= MutableLiveData<String>("Not_Clicked")
-    var records_liveData= MutableLiveData<String>("Not_Clicked")
+
+
       fun check(){
         var reqcall= Adv_interface_1.getInstance().getImageUrl()
           reqcall.enqueue(object :Callback<List<url_model>>{

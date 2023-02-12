@@ -10,8 +10,10 @@ interface Adv_interface_1 {
     @GET("quotes")
     fun getImageUrl(): Call<List<url_model>>
 
-    companion object{
+
+    companion object {
         val URL = "https://hospital-app-production.up.railway.app/api/"
+
 
         var retrofitService: Adv_interface_1? = null
         fun getInstance(): Adv_interface_1 {

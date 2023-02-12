@@ -14,42 +14,32 @@ import com.example.save_yourself.R
 import com.google.gson.Gson
 
 class Chat_adapter(var context: Context,var list:List<chat_model>):RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
-   /* var doct_list= mutableListOf<chat_model>()
-    fun setDoctorList(chatss: List<chat_model>){
-        this.doct_list= chatss as MutableList<chat_model>
-        notifyDataSetChanged()
-    }*/
+
    val sp = context.getSharedPreferences("login", AppCompatActivity.MODE_PRIVATE)
     var gson= Gson()
     var json=sp.getString("signUpModelObject","")
 
     var signUpModelObject=gson.fromJson(json,sign_up_log_in_model::class.java)
 
+
     class mvh1(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var name1: TextView? = null
-        var msg1: TextView
+        var msg1: TextView = itemView.findViewById(R.id.ic_singlerow1msg)
 
-        init {
-            // name1=itemView.findViewById(R.id.ic_singlerow1name);
-            msg1 = itemView.findViewById(R.id.ic_singlerow1msg)
-        }
     }
-    class mvh2(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var name2: TextView? = null
-        var msg2: TextView
 
-        init {
-            // name2=itemView.findViewById(R.id.ic_singlerow2name);
-            msg2 = itemView.findViewById(R.id.ic_singlerow2msg)
-        }
+
+    class mvh2(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var msg2: TextView = itemView.findViewById(R.id.ic_singlerow2msg)
+
     }
 
 
 
     override fun getItemViewType( position: Int):Int{
-       if (list.get(position).sender.equals(signUpModelObject.Phone))return 0
+       if (list[position].sender.equals(signUpModelObject.Phone))return 0
        else return 1
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if(viewType==0) {
@@ -62,6 +52,7 @@ class Chat_adapter(var context: Context,var list:List<chat_model>):RecyclerView.
         }
     }
 
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(holder.javaClass==mvh1::class.java){
            var viewHolder= holder as mvh1
@@ -72,6 +63,7 @@ class Chat_adapter(var context: Context,var list:List<chat_model>):RecyclerView.
             viewHolder.msg2.text=list.get(position).msg
         }
     }
+
 
     override fun getItemCount(): Int {
         Log.i("itemcvoubt",list.size.toString())

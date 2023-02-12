@@ -48,6 +48,8 @@ class sign_up : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         signupViewModel = ViewModelProvider(this)
             .get(SignUp_view_model::class.java)
+
+
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         binding.xmlsignupviewmodel = signupViewModel
         binding.proggressBar.visibility= View.GONE
@@ -64,6 +66,7 @@ class sign_up : AppCompatActivity() {
             if (it == "Clicked") {
                 binding.proggressBar.visibility=View.VISIBLE
                 //go to dashboard
+
                 if (phone_string?.let { it1 -> validatePhone(it1) } == true &&
                  aadhar_string?.let { it1 -> validateAadhar_No(it1)} == true &&
                 email_string?.let { it1 -> validateEmail(it1) } == true &&
@@ -94,14 +97,8 @@ class sign_up : AppCompatActivity() {
                             otp_sending_function()
                         }
                     })
-Log.i("already",check)
 
                 }
-                /* var intent= Intent(this,MainActivity::class.java)
-                 startActivity(intent)
-
-                 */
-
                 else {
                     binding.proggressBar.visibility=View.GONE
                     Toast.makeText(this, "Check Credential", Toast.LENGTH_SHORT).show()
@@ -131,6 +128,8 @@ Log.i("already",check)
                 storedVerificationId = verificationId
                 resendToken = token
                 binding.proggressBar.visibility=View.GONE
+
+
                 val intent = Intent(applicationContext, otp_activity::class.java)
                 intent.putExtra("storedVerificationId", storedVerificationId)
                 intent.putExtra("signUpModelObject", signUpModelObject as Serializable)
@@ -151,8 +150,9 @@ Log.i("already",check)
             .setActivity(this) // Activity (for callback binding)
             .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
             .build()
+
         PhoneAuthProvider.verifyPhoneNumber(options)
-        Log.d("checkk", "Auth started")
+
     }
 
     private fun observe_edit_text() {
@@ -170,11 +170,11 @@ Log.i("already",check)
         })
         signupViewModel.dob_liveData.observe(this, {
             dob_string = it
-            // validatePassword(it);
+
         })
         signupViewModel.doctorId_liveData.observe(this, {
             doctorId_string = it
-            // validateName(it);
+
         })
         signupViewModel.aaddhar_liveData.observe(this, {
             aadhar_string = it
@@ -182,7 +182,7 @@ Log.i("already",check)
         })
         signupViewModel.phone_liveData.observe(this, {
             phone_string = it
-            //validateName(it);
+
         })
 
     }
@@ -250,7 +250,7 @@ Log.i("already",check)
     }
 
     private fun validatePassword(it: String): Boolean {
-        if (it.length < 10) {
+        if ((it.length < 10&&it.length>0)) {
             binding.signupPassword.setError("Password Should be of atleast 10 Letters");
             binding.signupPassword.requestFocus()
             return false
@@ -280,7 +280,7 @@ Log.i("already",check)
     }
 
     private fun validateEmail(it: String): Boolean {
-        if (!Patterns.EMAIL_ADDRESS.matcher(it).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(it).matches()&&it.length>0) {
             binding.signupEmail.setError("Please Enter a Valid Email Id")
             binding.signupEmail.requestFocus()
             return false
@@ -289,7 +289,7 @@ Log.i("already",check)
     }
 
     private fun validatePhone(it: String): Boolean {
-        if (it.length < 10 || it.length > 10) {
+        if ((it.length < 10&&it.length>0) || it.length > 10) {
             binding.signupPhone.setError("Check Phone No.")
             binding.signupPhone.requestFocus()
             return false

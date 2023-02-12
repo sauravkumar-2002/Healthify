@@ -20,16 +20,21 @@ import com.example.save_yourself.view_models.Dashboard_patient_view_model
 import java.util.*
 
 class Dashboard_doctor : AppCompatActivity() {
-    lateinit var binding:ActivityDashboardDoctorBinding
+    lateinit var binding: ActivityDashboardDoctorBinding
     lateinit var dashboardPatientViewModel: Dashboard_patient_view_model
-    lateinit var doc_id_shared_pref:String
-    lateinit var layoutManager:LinearLayoutManager
-    lateinit var adapter:dash_patient_adv_adapter
+    lateinit var doc_id_shared_pref: String
+    lateinit var layoutManager: LinearLayoutManager
+    lateinit var adapter: dash_patient_adv_adapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=DataBindingUtil.setContentView(this,R.layout.activity_dashboard_doctor)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard_doctor)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        dashboardPatientViewModel= ViewModelProvider(this).get(Dashboard_patient_view_model::class.java)
+        setSupportActionBar(binding.myToolbar)
+
+        dashboardPatientViewModel =
+            ViewModelProvider(this).get(Dashboard_patient_view_model::class.java)
 
     }
 
@@ -47,39 +52,36 @@ class Dashboard_doctor : AppCompatActivity() {
         layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         binding.recv.layoutManager = layoutManager
-        adapter= dash_patient_adv_adapter(this)
-        binding.recv.adapter=adapter
+
+        adapter = dash_patient_adv_adapter(this)
+        binding.recv.adapter = adapter
         settimeforauto_scroll()
 
-//Log.i("sign_up_log_in_model",signUpModelObject.Phone)
 
-        //Toast.makeText(this,"load",Toast.LENGTH_LONG).show()
         dashboardPatientViewModel.urllist.observe(this, {
             if (it != null) {
-                //  binding.progressBar.visibility = View.GONE
-                // binding.progress.visibility = View.GONE
-                //Log.i("chec    recv",it.toString())
-                //Toast.makeText(this,it.toString(),Toast.LENGTH_LONG).show()
+
                 adapter.seturllist(it)
 
-            }
-            else{
+            } else {
                 //error
-                Toast.makeText(this,"eroor", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "eroor", Toast.LENGTH_LONG).show()
             }
         })
-        dashboardPatientViewModel.errorMessage.observe(this,{
-            Toast.makeText(this,"Eroor due to - "+it.toString()+"\n"+"offline data", Toast.LENGTH_LONG).show()
+        dashboardPatientViewModel.errorMessage.observe(this, {
+            Toast.makeText(this, "Eroor due to - Server", Toast.LENGTH_LONG).show()
         })
         dashboardPatientViewModel.check()
     }
 
     private fun settimeforauto_scroll() {
-        var time:Long=9000
-        var linearSnapHelper= LinearSnapHelper()
-        binding.recv.onFlingListener=null
+        var time: Long = 9000
+        var linearSnapHelper = LinearSnapHelper()
+
+        binding.recv.onFlingListener = null
         linearSnapHelper.attachToRecyclerView(binding.recv)
-        var timer= Timer()
+
+        var timer = Timer()
         timer.schedule(object : TimerTask() {
             override fun run() {
                 if (layoutManager.findLastCompletelyVisibleItemPosition() < adapter.getItemCount() - 1) {
@@ -100,17 +102,17 @@ class Dashboard_doctor : AppCompatActivity() {
     }
 
 
-
-
     fun appoint_request(view: android.view.View) {
-        var intent=Intent(this, appointment_request::class.java)
+        val intent = Intent(this, appointment_request::class.java)
         startActivity(intent)
     }
-    private fun setSharedpref() {
-        val sp = getSharedPreferences("login",MODE_PRIVATE)
 
-        doc_id_shared_pref= sp.getString("doctor_id","").toString()
-        binding.showName.text="Heyy, "+doc_id_shared_pref
+
+    private fun setSharedpref() {
+        val sp = getSharedPreferences("login", MODE_PRIVATE)
+
+        doc_id_shared_pref = sp.getString("doctor_id", "").toString()
+        binding.showName.text = "Heyy, " + doc_id_shared_pref
 
     }
 }

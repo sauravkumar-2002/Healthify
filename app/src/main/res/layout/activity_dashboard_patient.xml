@@ -1,216 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activities.Dashboard_patient">
-   <data>
-<variable
-    name="xmldashboardpatientviewmodel"
-    type="com.example.save_yourself.view_models.Dashboard_patient_view_model" />
-   </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
+
+    <data>
+
+        <variable
+            name="xmldashboardpatientviewmodel"
+            type="com.example.save_yourself.view_models.Dashboard_patient_view_model" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#1DA1F2"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Healthify"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/montserrat_bold"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/extra_appointment"
-                android:layout_gravity="right"
-                android:layout_marginRight="19dp"
-                android:src="@drawable/ic_baseline_notifications_24"
-
-                />
-
-
-    </androidx.appcompat.widget.Toolbar>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="19dp"
-       android:id="@+id/show_name"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="47dp"
-        android:text="Heyy, Sandeep"
-        android:textColor="#012134"
-        android:textSize="26sp"
-        android:textStyle="bold" />
-
-
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/layout_border">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="55dp"
-            android:layout_marginBottom="21dp"
-                android:id="@+id/recv" />
-
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/layout_border_white"
-            >
+            android:orientation="vertical">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/my_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="?attr/actionBarSize"
+                android:background="#1DA1F2"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/extra_appointment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="19dp"
+                    android:src="@drawable/ic_baseline_notifications_24"
+
+                    />
 
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/active_chats"
-                    android:onClick="active_chats"
-                    app:cardCornerRadius="27dp"
-                    app:cardElevation="15dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="26dp"
-                    android:layout_marginTop="46dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/card_edge"
-
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Active Chats"
-                        android:layout_gravity="center"
-                        android:textColor="#070931"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        android:textSize="20sp"/>
+            </androidx.appcompat.widget.Toolbar>
 
 
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/find_your_doctor"
-                    android:onClick="find_your_doctors"
-                    app:cardElevation="15dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="26dp"
-                    android:layout_marginTop="46dp"
-                    app:cardCornerRadius="27dp"
-                    android:layout_marginBottom="15dp"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Find a Doctor"
-                        android:layout_gravity="center"
-                        android:textColor="#070931"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/show_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="47dp"
+                android:text="Heyy, Sandeep"
+                android:textColor="#012134"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
 
-
-                </androidx.cardview.widget.CardView>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="623dp"
+                android:background="@drawable/layout_border"
+                android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recv"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginBottom="21dp" />
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/records"
-                    android:onClick="records"
-                    app:cardCornerRadius="27dp"
-                    app:cardElevation="15dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="26dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="35dp">
+                    android:background="@drawable/layout_border_white"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Previous Records"
-                        android:layout_gravity="center"
-                        android:textColor="#070931"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:textAlignment="center"/>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
-                </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/active_chats"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="27dp"
+                            android:layout_marginTop="46dp"
+                            android:layout_marginRight="26dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/card_edge"
+                            android:onClick="active_chats"
+                            app:cardCornerRadius="27dp"
+                            app:cardElevation="15dp"
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/my_profile"
-                    android:onClick="my_profile"
-                    app:cardCornerRadius="27dp"
-                    app:cardElevation="15dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="26dp"
-                    android:layout_marginBottom="35dp"
-                    android:layout_marginTop="15dp">
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Active Chats"
+                                android:textAlignment="center"
+                                android:textColor="#070931"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="My Profile"
-                        android:layout_gravity="center"
-                        android:textColor="#070931"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:textAlignment="center"/>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/find_your_doctor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="27dp"
+                            android:layout_marginTop="46dp"
+                            android:layout_marginRight="26dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_weight="1"
+                            android:onClick="find_your_doctors"
+                            app:cardCornerRadius="27dp"
+                            app:cardElevation="15dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Find a Doctor"
+                                android:textAlignment="center"
+                                android:textColor="#070931"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
 
 
-                </androidx.cardview.widget.CardView>
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.cardview.widget.CardView>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/records"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="27dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="26dp"
+                            android:layout_marginBottom="35dp"
+                            android:layout_weight="1"
+                            android:onClick="records"
+                            app:cardCornerRadius="27dp"
+                            app:cardElevation="15dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Previous Records"
+                                android:textAlignment="center"
+                                android:textColor="#070931"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/my_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="27dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="26dp"
+                            android:layout_marginBottom="35dp"
+                            android:layout_weight="1"
+                            android:onClick="my_profile"
+                            app:cardCornerRadius="27dp"
+                            app:cardElevation="15dp">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="My Profile"
+                                android:textAlignment="center"
+                                android:textColor="#070931"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+
+                        </androidx.cardview.widget.CardView>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
-
-
-    </LinearLayout>
-
-
-</LinearLayout>
+    </ScrollView>
 </layout>

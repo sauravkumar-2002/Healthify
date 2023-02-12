@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/my_toolbar"
                 android:layout_width="match_parent"
@@ -24,22 +25,24 @@
                 android:elevation="4dp"
                 android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Healthify"
-                    android:textSize="18sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text=""
                     android:textColor="@color/white"
-                    android:fontFamily="@font/montserrat_bold"/>
+                    android:textSize="18sp" />
             </androidx.appcompat.widget.Toolbar>
+
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/browse"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/fammer"
-                android:id="@+id/browse"
                 android:layout_gravity="center"
                 android:layout_marginTop="100dp"
-                android:layout_marginBottom="50dp"/>
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/fammer" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,19 +58,17 @@
                     android:text="Name"
                     android:textColor="#092638"
                     android:textSize="22dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:id="@+id/name"
                     android:text="Patient Name"
                     android:textColor="#092638"
                     android:textSize="22dp"
-                    android:textStyle="bold"
-                    />
-
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -75,10 +76,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="50dp"
-                android:paddingRight="30dp"
-                android:layout_marginTop="10dp">
+                android:paddingRight="30dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -87,19 +88,17 @@
                     android:text="D.O.B"
                     android:textColor="#092638"
                     android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:id="@+id/dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:id="@+id/dob"
                     android:text="04-04-2002"
                     android:textColor="#092638"
                     android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
-
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -107,10 +106,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:paddingLeft="50dp"
-                android:paddingRight="30dp"
-                android:layout_marginTop="5dp">
+                android:paddingRight="30dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -119,59 +118,58 @@
                     android:text="Phone"
                     android:textColor="#092638"
                     android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="9024xxxxxx"
+                    android:textColor="#092638"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:paddingRight="30dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:id="@+id/phone"
-                    android:text="9024xxxxxx"
+                    android:text="Aadhar"
                     android:textColor="#092638"
                     android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/aadhar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="xxxx xxxx xxxx xxxx"
+                    android:textColor="#092638"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
 
+            </LinearLayout>
 
-            </LinearLayout><LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="50dp"
-            android:paddingRight="30dp"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Aadhar"
-                android:textColor="#092638"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="xxxx xxxx xxxx xxxx"
-                android:id="@+id/aadhar"
-                android:textColor="#092638"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                />
-
-
-
-        </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:orientation="horizontal"
                 android:paddingLeft="50dp"
-                android:paddingRight="30dp"
-                android:layout_marginTop="15dp">
+                android:paddingRight="30dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -180,29 +178,28 @@
                     android:text="Email"
                     android:textColor="#092638"
                     android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="abc@gmail.com"
-                    android:id="@+id/email"
                     android:textColor="#092638"
                     android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
-
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:paddingLeft="50dp"
-                android:paddingRight="30dp"
-                android:layout_marginTop="5dp">
+                android:paddingRight="30dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -211,19 +208,17 @@
                     android:text="Password"
                     android:textColor="#092638"
                     android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="*********"
-                    android:id="@+id/password"
                     android:textColor="#092638"
                     android:textSize="16dp"
-                    android:textStyle="bold"
-                    />
-
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -233,25 +228,24 @@
                 android:id="@+id/logout"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:background="@drawable/auth_bttn"
-
-                android:text="Logout"
-                android:textSize="20dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="80dp"
+
+                android:background="@drawable/auth_bttn"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Logout"
                 android:textColor="@android:color/white"
-                android:fontFamily="@font/montserrat_bold"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change Password"
-                android:textStyle="bold"
-                android:textColor="#092638"
-                android:textSize="14dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                />
+                android:text="Change Password"
+                android:textColor="#092638"
+                android:textSize="14dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </ScrollView>

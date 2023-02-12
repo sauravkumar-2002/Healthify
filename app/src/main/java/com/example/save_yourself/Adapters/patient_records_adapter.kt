@@ -16,18 +16,24 @@ import com.google.gson.Gson
 
 class patient_records_adapter(var context:Context):RecyclerView.Adapter<patient_records_adapter.ViewHolder>() {
 var list= mutableListOf<Doctors>()
+
     fun setDoctorList(doct_list: List<Doctors>,status:String){
         this.list= doct_list as MutableList<Doctors>
        list= list.filter {it.status==status} as MutableList<Doctors>
         notifyDataSetChanged()
     }
+
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val doc_name=itemView.findViewById<TextView>(R.id.doctor_name)
         val problems=itemView.findViewById<TextView>(R.id.related_problem)
+
         val date=itemView.findViewById<TextView>(R.id.date)
         val status=itemView.findViewById<TextView>(R.id.status)
         var card=itemView.findViewById<CardView>(R.id.cardview)
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.list_item_records, parent, false)
@@ -36,12 +42,13 @@ var list= mutableListOf<Doctors>()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var gson= Gson()
-        //sharedPref.edit().putString("signUpModelObject",gson.toJson(signUpModelObject).toString()).apply()
-       // sharedPref.edit().putBoolean("logged",true).apply()
+
+
      holder.date.text=list.get(position).date
      holder.problems.text=list.get(position).problem
      holder.doc_name.text=list.get(position).doctorname
      holder.status.text=list.get(position).status
+
         holder.card.setOnClickListener {
             var intent=Intent(context,Appointment_Activity::class.java)
             intent.putExtra("doctor_detail",gson.toJson(list.get(position)).toString())

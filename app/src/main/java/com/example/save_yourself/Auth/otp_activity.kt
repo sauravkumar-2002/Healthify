@@ -29,27 +29,30 @@ import java.io.Serializable
 class otp_activity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var signUpModelObject: sign_up_log_in_model
-    lateinit var progress_bar:ProgressBar
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         auth = FirebaseAuth.getInstance()
-        // progress_bar=findViewById<ProgressBar>(R.id.proggress_bar)
-        // get storedVerificationId from the intent
+
         val storedVerificationId = intent.getStringExtra("storedVerificationId")
-         signUpModelObject = intent.getSerializableExtra("signUpModelObject") as sign_up_log_in_model
+        signUpModelObject = intent.getSerializableExtra("signUpModelObject") as sign_up_log_in_model
         Toast.makeText(this, signUpModelObject.toString(), Toast.LENGTH_LONG).show()
-        Log.i("object",signUpModelObject.toString())
+
+
         findViewById<Button>(R.id.login).setOnClickListener {
+
             val otp = findViewById<EditText>(R.id.et_otp).text.trim().toString()
             if (otp.isNotEmpty()) {
+
                 val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
                     storedVerificationId.toString(), otp
                 )
                 signInWithPhoneAuthCredential(credential)
             } else {
-               // progress_bar.visibility=View.GONE
+
                 Toast.makeText(this, "Enter OTP", Toast.LENGTH_SHORT).show()
             }
         }
@@ -59,23 +62,22 @@ class otp_activity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-///post data to api
-                   // progress_bar.visibility=View.GONE
+
                     postSignUpData()
-                    val sharedPref = getSharedPreferences("login",MODE_PRIVATE)
-                    var gson= Gson()
-                    sharedPref.edit().putString("signUpModelObject",gson.toJson(signUpModelObject).toString()).apply()
-                    sharedPref.edit().putBoolean("logged",true).apply()
-                        val intent = Intent(this, Dashboard_patient::class.java)
-                        startActivity(intent)
-                        finish()
+                    val sharedPref = getSharedPreferences("login", MODE_PRIVATE)
+                    var gson = Gson()
+                    sharedPref.edit()
+                        .putString("signUpModelObject", gson.toJson(signUpModelObject).toString())
+                        .apply()
+                    sharedPref.edit().putBoolean("logged", true).apply()
+
+                    val intent = Intent(this, Dashboard_patient::class.java)
+                    startActivity(intent)
+                    finish()
 
                 } else {
-                    // Sign in failed, display a message and update the UI
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
-                       // progress_bar.visibility=View.GONE
 
+                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         Toast.makeText(this, "Invalid OTP", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -83,22 +85,24 @@ class otp_activity : AppCompatActivity() {
     }
 
     private fun postSignUpData() {
-     var reqcall= Auth_interface_1.getInstance().add_sign_up_user(signUpModelObject)
-    reqcall.enqueue(object :Callback<sign_up_log_in_model>{
-        override fun onResponse(
-            call: Call<sign_up_log_in_model>,
-            response: Response<sign_up_log_in_model>
-        ) {
-            Toast.makeText(this@otp_activity,"User Added Successfully",Toast.LENGTH_LONG).show()
-            Log.i("checkApi","donrrrrrrrrrr")
-        }
 
-        override fun onFailure(call: Call<sign_up_log_in_model>, t: Throwable) {
-            Log.i("checkApi",t.message.toString())
-        }
+        var reqcall = Auth_interface_1.getInstance().add_sign_up_user(signUpModelObject)
+
+        reqcall.enqueue(object : Callback<sign_up_log_in_model> {
+
+            override fun onResponse(
+                call: Call<sign_up_log_in_model>,
+                response: Response<sign_up_log_in_model>
+            ) {
+                Toast.makeText(this@otp_activity, "User Added Successfully", Toast.LENGTH_LONG)
+                    .show()
+            }
+
+            override fun onFailure(call: Call<sign_up_log_in_model>, t: Throwable) {
+            }
 
 
-    })
+        })
     }
 }
 
