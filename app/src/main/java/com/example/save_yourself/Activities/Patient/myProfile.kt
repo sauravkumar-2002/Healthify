@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -53,27 +54,14 @@ class myProfile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_my_profile)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        setSupportActionBar(findViewById(R.id.my_toolbar))
 
         setSharedpref()
+        upload("888")
         binding.browse.setOnClickListener {
           contract.launch("image/*")
-            binding.upload.setOnClickListener {
-                var img_base64: String?=null
-                if(imageUri==null){
-                    Toast.makeText(this,"please choose image",Toast.LENGTH_LONG).show()
-                }
-                else{
-                    var bitmap=  imageuritoBitmap(imageUri)
-                    val my_img_view = findViewById(R.id.imageView) as ImageView
-                    my_img_view.setImageBitmap(bitmap)
-                    img_base64= encodeImageToBase64(bitmap)
-                    Log.i("img_base_64",img_base64!!)
-                    upload(img_base64)
-                }
 
-
-
-            }
         }
 
 
@@ -99,32 +87,12 @@ class myProfile : AppCompatActivity() {
 
     private fun upload(img_base64: String?) {
         signUpModelObject.DoctorId=img_base64!!
-        binding.details.text=signUpModelObject.toString()
-        GlobalScope.launch(Dispatchers.Main) {
-            var reqCall = Auth_interface_1.getInstance()
-                .update_image(signUpModelObject.Phone, signUpModelObject.DoctorId)
-            reqCall.enqueue(object : Callback<List<sign_up_log_in_model>> {
-                override fun onResponse(
-                    call: Call<List<sign_up_log_in_model>>,
-                    response: Response<List<sign_up_log_in_model>>
-                ) {
-
-                    Log.i("vv", response.toString())
-                    if (response.isSuccessful) {
-                        Toast.makeText(this@myProfile, "updated", Toast.LENGTH_LONG).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<List<sign_up_log_in_model>>, t: Throwable) {
-                    Toast.makeText(
-                        this@myProfile,
-                        "not updated - error detected",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-            })
-        }
+        binding.name.text=signUpModelObject.Name
+        binding.phone.text=signUpModelObject.Phone
+        binding.password.text=signUpModelObject.Password
+        binding.aadhar.text=signUpModelObject.Aadhar
+        binding.email.text=signUpModelObject.Email
+        binding.dob.text=signUpModelObject.Dob
     }
 
     private fun imageuritoBitmap(imageUri: Uri):Bitmap{
@@ -146,7 +114,7 @@ class myProfile : AppCompatActivity() {
         return decodedImage
     }
      val contract=registerForActivityResult(ActivityResultContracts.GetContent()){
-        binding.imageView.setImageURI(it)
+        binding.browse.setImageURI(it)
         imageUri=it!!
     }
 }

@@ -51,7 +51,7 @@ class find_your_doc_adapter(var context:Context,signUpModelObject: sign_up_log_i
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     holder.doc_name.text=doct_list.get(position).Name
-    holder.rating.text=doct_list.get(position).Rating
+    holder.rating.text="Rating - "+doct_list.get(position).Rating
         var arr:List<String>?
         var tag:String="Speciality in -> "
 arr= doct_list.get(position).Speciality
@@ -93,7 +93,7 @@ val dialog=AlertDialog.Builder(context)
 
     dialog.setPositiveButton("Confirm",DialogInterface.OnClickListener { dialog, which -> 
         var day=datePicker.dayOfMonth
-        var month=datePicker.month
+        var month=datePicker.month+1
         var year=datePicker.year
         var choosen_date="$day/$month/$year"
         var rel_problems=related_prob_edittext.text.toString()

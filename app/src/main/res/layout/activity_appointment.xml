@@ -6,32 +6,244 @@
     <data>
 
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activities.Appointment_Activity">
+        tools:context=".Activities.Patient.myProfile">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/my_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#1DA1F2"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Healthify"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/montserrat_bold"/>
+            </androidx.appcompat.widget.Toolbar>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/fammer"
+                android:id="@+id/browse"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="50dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:paddingRight="30dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Doctor Name"
+                    android:textColor="#092638"
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/name"
+                    android:text="Patient Name"
+                    android:textColor="#092638"
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    />
 
 
-        <TextView
-            android:id="@+id/details"
-            android:layout_width="210dp"
-            android:layout_height="189dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginEnd="104dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/chats"
-            android:layout_width="wrap_content"
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:paddingRight="30dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Date "
+                    android:textColor="#092638"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/dob"
+                    android:text="04-04-2002"
+                    android:textColor="#092638"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:paddingRight="30dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Status"
+                    android:textColor="#092638"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/status"
+                    android:text="9024xxxxxx"
+                    android:textColor="#092638"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+
+
+
+            </LinearLayout><LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
-            android:text="chats"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.555"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/details" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:orientation="horizontal"
+            android:paddingLeft="50dp"
+            android:paddingRight="30dp"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Aadhar"
+                android:textColor="#092638"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="xxxx xxxx xxxx xxxx"
+                android:id="@+id/aadhar"
+                android:textColor="#092638"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+
+
+
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:paddingRight="30dp"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Email"
+                    android:textColor="#092638"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="abc@gmail.com"
+                    android:id="@+id/email"
+                    android:textColor="#092638"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:paddingRight="30dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Problems"
+                    android:textColor="#092638"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="*********"
+                    android:id="@+id/problems"
+                    android:textColor="#092638"
+                    android:textAlignment="center"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    />
+
+
+
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/chats"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/auth_bttn"
+
+                android:text="Go to Chats"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/montserrat_bold"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 </layout>

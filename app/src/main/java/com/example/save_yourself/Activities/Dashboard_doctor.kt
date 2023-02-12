@@ -3,6 +3,7 @@ package com.example.save_yourself.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -27,7 +28,9 @@ class Dashboard_doctor : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_dashboard_doctor)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         dashboardPatientViewModel= ViewModelProvider(this).get(Dashboard_patient_view_model::class.java)
+
     }
 
     override fun onResume() {
@@ -72,7 +75,7 @@ class Dashboard_doctor : AppCompatActivity() {
     }
 
     private fun settimeforauto_scroll() {
-        var time:Long=4000
+        var time:Long=9000
         var linearSnapHelper= LinearSnapHelper()
         binding.recv.onFlingListener=null
         linearSnapHelper.attachToRecyclerView(binding.recv)
@@ -99,13 +102,6 @@ class Dashboard_doctor : AppCompatActivity() {
 
 
 
-
-
-
-    fun records(view: android.view.View) {
-        var intent= Intent(this, Doctor_records::class.java)
-        startActivity(intent)
-    }
     fun appoint_request(view: android.view.View) {
         var intent=Intent(this, appointment_request::class.java)
         startActivity(intent)
@@ -114,6 +110,7 @@ class Dashboard_doctor : AppCompatActivity() {
         val sp = getSharedPreferences("login",MODE_PRIVATE)
 
         doc_id_shared_pref= sp.getString("doctor_id","").toString()
+        binding.showName.text="Heyy, "+doc_id_shared_pref
 
     }
 }

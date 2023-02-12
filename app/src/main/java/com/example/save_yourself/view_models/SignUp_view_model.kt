@@ -12,13 +12,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SignUp_view_model:ViewModel() {
-var name_liveData= MutableLiveData<String>()
-var email_liveData= MutableLiveData<String>()
-var password_liveData= MutableLiveData<String>()
-var dob_liveData= MutableLiveData<String>()
-var phone_liveData= MutableLiveData<String>()
-var aaddhar_liveData= MutableLiveData<String>()
-var doctorId_liveData= MutableLiveData<String>()
+var name_liveData= MutableLiveData<String>("")
+var email_liveData= MutableLiveData<String>("")
+var password_liveData= MutableLiveData<String>("")
+var dob_liveData= MutableLiveData<String>("")
+var phone_liveData= MutableLiveData<String>("")
+var aaddhar_liveData= MutableLiveData<String>("")
+var doctorId_liveData= MutableLiveData<String>("")
     var if_exist_liveData=MutableLiveData<String>("true")
 var continue_register_liveData= MutableLiveData<String>("Not_Clicked")
     fun continue_register(){

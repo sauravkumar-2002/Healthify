@@ -11,6 +11,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Activities.Patient.activeChats">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#1DA1F2"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Healthify"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </androidx.appcompat.widget.Toolbar>
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="409dp"
     android:id="@+id/recv"

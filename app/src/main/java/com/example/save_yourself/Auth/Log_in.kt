@@ -2,9 +2,12 @@ package com.example.save_yourself.Auth
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -39,10 +42,13 @@ class Log_in : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_log_in)
         logInViewModel = ViewModelProvider(this)
             .get(Log_in_view_model::class.java)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         binding.xmlloginviewmodel = logInViewModel
+        binding.proggressBar.visibility=View.GONE
         sharedPref=getSharedPreferences("login", MODE_PRIVATE)
         if(sharedPref.getBoolean("logged",false))go_to_patientDashbord()
         binding.continueButton.setOnClickListener {
+            binding.proggressBar.visibility=View.VISIBLE
             validatePhoneandPassword()
         }
         binding.newUser.setOnClickListener {
@@ -59,7 +65,7 @@ class Log_in : AppCompatActivity() {
                 validateDoctorId(docid.text.toString().trim())
             // dialog.dismiss()
             }
-            dialog.setCancelable(false)
+            dialog.setCancelable(true)
             dialog.setContentView(view)
             dialog.show()
         }
@@ -68,6 +74,10 @@ class Log_in : AppCompatActivity() {
         })
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+    }
     private fun validateDoctorId(doctorid:String) {
 
         var reqcall=Auth_interface_1.getInstance().log_in_doctor(doctorid)
@@ -101,36 +111,50 @@ class Log_in : AppCompatActivity() {
     }
 
     private fun validatePhoneandPassword() {
+        Log.i("check_credential",binding.loginPassword.text.toString())
+        if (binding.loginPhone.equals("") || binding.loginPassword.equals("")) {
+            binding.proggressBar.visibility = View.GONE
+            Toast.makeText(this@Log_in, "Check credentials", Toast.LENGTH_LONG).show()
+        } else {
+            var reqcall = Auth_interface_1.getInstance().log_in_user(
+                binding.loginPhone.text.toString().trim(),
+                binding.loginPassword.text.toString().trim()
+            )
+            reqcall.enqueue(object : Callback<List<sign_up_log_in_model>> {
+                override fun onResponse(
+                    call: Call<List<sign_up_log_in_model>>,
+                    response: Response<List<sign_up_log_in_model>>
+                ) {
+                    if (response.isSuccessful) {
+                        binding.proggressBar.visibility = View.GONE
+                        Toast.makeText(this@Log_in, "User Register Successfully", Toast.LENGTH_LONG)
+                            .show()
+                        Log.i("checkApi_loginn", response.body().toString())
 
-        var reqcall=Auth_interface_1.getInstance().log_in_user(binding.loginPhone.text.toString().trim(),binding.loginPassword.text.toString().trim())
-        reqcall.enqueue(object: Callback<List<sign_up_log_in_model>>{
-            override fun onResponse(
-                call: Call<List<sign_up_log_in_model>>,
-                response: Response<List<sign_up_log_in_model>>
-            ) {
-                if(response.isSuccessful) {
-                    Toast.makeText(this@Log_in, "User Register Successfully", Toast.LENGTH_LONG)
-                        .show()
-                    Log.i("checkApi_loginn", response.body().toString())
+                        signUpModelObject = response.body()!![0]
+                        val gson = Gson()
+                        Log.i("checkApi_login", gson.toJson(signUpModelObject).toString())
+                        sharedPref.edit().putString(
+                            "signUpModelObject",
+                            gson.toJson(signUpModelObject).toString()
+                        ).apply()
+                        sharedPref.edit().putBoolean("logged", true).apply()
+                        go_to_patientDashbord()
 
-                    signUpModelObject=response.body()!![0]
-                    val gson=Gson()
-                    Log.i("checkApi_login",gson.toJson(signUpModelObject).toString())
-                    sharedPref.edit().putString("signUpModelObject",gson.toJson(signUpModelObject).toString()).apply()
-                    sharedPref.edit().putBoolean("logged",true).apply()
-                    go_to_patientDashbord()
+                    }
 
                 }
-            }
 
-            override fun onFailure(call: Call<List<sign_up_log_in_model>>, t: Throwable) {
-                Log.i("checkApi_login",t.message.toString())
-                Toast.makeText(this@Log_in,"Check Your Credential", Toast.LENGTH_LONG).show()
-                binding.loginPhone.clearFocus()
-                binding.loginPassword.clearFocus()
-            }
+                override fun onFailure(call: Call<List<sign_up_log_in_model>>, t: Throwable) {
+                    Log.i("checkApi_login", t.message.toString())
+                    Toast.makeText(this@Log_in, "Check Your Credential", Toast.LENGTH_LONG).show()
+                    binding.proggressBar.visibility = View.GONE
+                    binding.loginPhone.clearFocus()
+                    binding.loginPassword.clearFocus()
+                }
 
-        })
+            })
+        }
     }
 
     private fun go_to_patientDashbord() {

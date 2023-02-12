@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -33,6 +34,8 @@ class Dashboard_patient : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard_patient)
         dashboardPatientViewModel=ViewModelProvider(this).get(Dashboard_patient_view_model::class.java)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        setSupportActionBar(findViewById(R.id.my_toolbar))
         binding.xmldashboardpatientviewmodel=dashboardPatientViewModel
     }
     override fun onResume() {
@@ -91,7 +94,7 @@ class Dashboard_patient : AppCompatActivity() {
     }
 
     private fun settimeforauto_scroll() {
-        var time:Long=4000
+        var time:Long=9000
         var linearSnapHelper=LinearSnapHelper()
         binding.recv.onFlingListener=null
         linearSnapHelper.attachToRecyclerView(binding.recv)
@@ -138,5 +141,6 @@ class Dashboard_patient : AppCompatActivity() {
         val type: Type = object : TypeToken<sign_up_log_in_model>() {}.type
 
         signUpModelObject=gson.fromJson(json,sign_up_log_in_model::class.java)
+        binding.showName.text="Heyy, "+signUpModelObject.Name
     }
 }

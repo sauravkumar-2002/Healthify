@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -47,11 +48,21 @@ class sign_up : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         signupViewModel = ViewModelProvider(this)
             .get(SignUp_view_model::class.java)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         binding.xmlsignupviewmodel = signupViewModel
+        binding.proggressBar.visibility= View.GONE
         auth = FirebaseAuth.getInstance()
 
+
+        binding.loginHere.setOnClickListener {
+            startActivity(Intent(applicationContext, Log_in::class.java))
+            finish()
+        }
+
         signupViewModel.continue_register_liveData.observe(this, {
+
             if (it == "Clicked") {
+                binding.proggressBar.visibility=View.VISIBLE
                 //go to dashboard
                 if (phone_string?.let { it1 -> validatePhone(it1) } == true &&
                  aadhar_string?.let { it1 -> validateAadhar_No(it1)} == true &&
@@ -69,11 +80,13 @@ class sign_up : AppCompatActivity() {
 
                     signupViewModel.if_exist_liveData.observe(this,{
                         if(it=="false"){
+                            binding.proggressBar.visibility=View.GONE
                             Toast.makeText(this, "User Already Exists"+it, Toast.LENGTH_SHORT).show()
                            check="false"
                             Log.i("already",check)
                         }
                         else{
+
                             signUpModelObject = sign_up_log_in_model(
                                 name_string!!, dob_string!!, email_string!!, phone_string!!,
                                 password_string!!, aadhar_string!!, doctorId_string!!
@@ -88,7 +101,11 @@ Log.i("already",check)
                  startActivity(intent)
 
                  */
-                else Toast.makeText(this, "Check Credential", Toast.LENGTH_SHORT).show()
+
+                else {
+                    binding.proggressBar.visibility=View.GONE
+                    Toast.makeText(this, "Check Credential", Toast.LENGTH_SHORT).show()
+                }
             }
         })
         observe_edit_text()
@@ -113,6 +130,7 @@ Log.i("already",check)
                 Log.d("checkk ", "onCodeSent: $verificationId")
                 storedVerificationId = verificationId
                 resendToken = token
+                binding.proggressBar.visibility=View.GONE
                 val intent = Intent(applicationContext, otp_activity::class.java)
                 intent.putExtra("storedVerificationId", storedVerificationId)
                 intent.putExtra("signUpModelObject", signUpModelObject as Serializable)

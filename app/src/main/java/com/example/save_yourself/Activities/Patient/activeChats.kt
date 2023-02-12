@@ -3,6 +3,7 @@ package com.example.save_yourself.Activities.Patient
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.save_yourself.Adapters.patient_records_adapter
@@ -23,6 +24,7 @@ class activeChats : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_active_chats)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
     }
     override fun onResume() {
         super.onResume()

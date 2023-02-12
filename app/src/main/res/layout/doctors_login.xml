@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    app:cardBackgroundColor="#F8F8F8"
-    app:cardCornerRadius="10dp"
-    app:cardMaxElevation="0dp"
-
-    app:cardUseCompatPadding="true">
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="20dp"
+    android:background="@drawable/layout_border_white"
     android:layout_marginTop="0dp"
     android:layout_marginRight="20dp"
     android:orientation="vertical"
@@ -28,17 +21,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:fontFamily="@font/montserrat_regular"
-        android:text="Enter Your Doctor Id -"
+        android:text="   Enter Your Doctor Id -"
         android:layout_gravity="left"
-        android:textColor="@color/black"
+        android:layout_marginTop="21dp"
+        android:textColor="#0698F1"
         android:textSize="20sp"
         android:textStyle="bold"/>
     <EditText
         android:id="@+id/login_doctor_id"
+        android:background="@drawable/rounded_corner"
         android:layout_width="match_parent"
         android:layout_height="53dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_bg"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:fontFamily="@font/montserrat_medium"
         android:hint="Enter Your Doctor id"
@@ -51,7 +45,7 @@
             android:id="@+id/continue_button_doctor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:background="@drawable/auth_bttn"
@@ -74,4 +68,3 @@
             app:layout_constraintTop_toBottomOf="@id/linearLayout"
             app:layout_constraintVertical_bias="1.0" />
 </LinearLayout>
-</androidx.cardview.widget.CardView>

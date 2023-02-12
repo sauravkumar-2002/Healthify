@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.save_yourself.Activities.Dashboard_doctor
 import com.example.save_yourself.Activities.Dashboard_patient
@@ -27,11 +29,13 @@ import java.io.Serializable
 class otp_activity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var signUpModelObject: sign_up_log_in_model
+    lateinit var progress_bar:ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         auth = FirebaseAuth.getInstance()
-
+        // progress_bar=findViewById<ProgressBar>(R.id.proggress_bar)
         // get storedVerificationId from the intent
         val storedVerificationId = intent.getStringExtra("storedVerificationId")
          signUpModelObject = intent.getSerializableExtra("signUpModelObject") as sign_up_log_in_model
@@ -45,6 +49,7 @@ class otp_activity : AppCompatActivity() {
                 )
                 signInWithPhoneAuthCredential(credential)
             } else {
+               // progress_bar.visibility=View.GONE
                 Toast.makeText(this, "Enter OTP", Toast.LENGTH_SHORT).show()
             }
         }
@@ -55,6 +60,7 @@ class otp_activity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 ///post data to api
+                   // progress_bar.visibility=View.GONE
                     postSignUpData()
                     val sharedPref = getSharedPreferences("login",MODE_PRIVATE)
                     var gson= Gson()
@@ -68,6 +74,8 @@ class otp_activity : AppCompatActivity() {
                     // Sign in failed, display a message and update the UI
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
+                       // progress_bar.visibility=View.GONE
+
                         Toast.makeText(this, "Invalid OTP", Toast.LENGTH_SHORT).show()
                     }
                 }

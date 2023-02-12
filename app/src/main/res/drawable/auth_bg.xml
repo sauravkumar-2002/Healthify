@@ -4,9 +4,9 @@
     android:id="@+id/bg">
 
     <gradient
-        android:angle="270"
-        android:endColor="#90CAE4"
-        android:startColor="#ECE2E2" />
+        android:angle="290"
+        android:endColor="#70CEF8"
+        android:startColor="#FFFFFF" />
 
 
 </shape>
