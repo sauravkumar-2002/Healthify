@@ -27,6 +27,10 @@ All the Activities are handled by Model-View View-Model.
 
 3.Server Link-https://hospital-app-production.up.railway.app/
 
+4.Ppt Link-https://drive.google.com/file/d/1lsLRU8qWR3P0RdGsngDVVak9RWcH51CL/view?usp=sharing
+
+5.Video Link-https://drive.google.com/file/d/1eT1g7qVF6ZXIzTPggmFrn-mbR2dKYZB4/view?usp=sharing
+
 # UI 
 1.Recycler View has been used
 
